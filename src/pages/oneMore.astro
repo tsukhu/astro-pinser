@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to Astro.">
+  <meta-scene>
+    <template slot="scene">
+      <a-sky hide-on-ar color="#80d4ff" />
+      <!-- IDLE man -->
+      <meta-gltf
+        url="/man.glb"
+        animations="/animations.glb"
+        playing="clip: IDLE;"
+        position="-0.854 0 -1.754"
+        rotation="0 34.26 0"
+      />
+
+      <meta-dialog width="2" height="1" rotation="0 0 0" position="-1 1.2 -2">
+        <a-image
+          src="/logo.png"
+          width="0.5"
+          height="0.5"
+          position="0.367 0.392 0.001"
+        />
+        <a-text
+          value="Welcome in the new web page2"
+          color="#000000"
+          align="center"
+          position="0.966 0.830 0.001"
+          width="2"
+        />
+        <a-text
+          value={`You can move around by teleporting with the white ring pointing to the ground.
+
+Good visit !`}
+          color="#000000"
+          align="left"
+          position="0.762 0.384 0.001"
+          width="1.2"
+        />
+      </meta-dialog>
+      <meta-teleportable
+        hide-on-ar
+        width="22.9"
+        height="16.92"
+        color="#d99f20"
+      />
+    </template>
+
+    <template slot="avatar">
+      <meta-ready-player-me
+        avatarurl="/visitor.glb"
+        avatarname="Visitor"
+        position="0 -0.65 0"
+        rotation="0 180 0"
+      />
+    </template>
+  </meta-scene>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+</style>
